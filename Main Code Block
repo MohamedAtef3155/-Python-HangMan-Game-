@@ -1,0 +1,108 @@
+#--------------------------------------Step 1 Taking Word Input from main player-------------------------
+while True:
+      m_player_input= input('Main player should Enter a word with maximum size 10 letters')
+      is_letter = True
+      
+      #Validating its correct word
+      if m_player_input.isalpha() == False:
+            is_letter = False
+            
+      if is_letter == False:
+             print('Please make sure you insert only letters with no numbers or special characters or empty input')
+      
+      #Validating on word size
+      elif len(m_player_input) > 10:
+             print('This word is too long please inset a word with maximum size of 10 letters')  
+
+      #handling user input (capitlizing it for guessing player comparison)
+      elif is_letter == True and len(m_player_input) <= 10:
+            m_player_word = m_player_input.upper()
+            break
+      
+
+#---------------------------------------Step 2 Replacing the word with DASHES and SPACES between dashes----------------------
+dashes=[]  
+
+for letter in range(len(m_player_word)):
+      dashes.append("_")
+
+#adding space between dashes
+print (f"{' '.join(dashes)}\n\n")
+
+
+#-------------------------------------Step 3 Taking The player guessings-----------------------------'
+
+#p Means Player
+trials=6
+while True:
+    p2_input = input('Guess one letter in the word ')
+    is_letter = True
+    
+
+    if p2_input.isalpha() == False:
+            is_letter = False 
+            
+    if is_letter == False:
+             print('Please make sure you insert only one Alphabet')
+    elif len(p2_input) > 1:
+             print('Its more than one alphabet you can insert only one at a time')  
+
+    #Checking if the p2 input is valid
+    elif is_letter == True and len(p2_input) == 1:
+            p2_alphabet = p2_input.upper()
+            
+
+    # ----------------------------------Checking wether the alphabet in the main player word or not-----------------------------
+
+            # In case it is not in the word
+            if p2_alphabet not in m_player_word and trials != 1:   
+                  print('lets see if {} exists in the word....'.format(p2_alphabet))
+                  
+                  if trials > 6:
+                        trials-=1
+                        print(f"it is not in the word (trials left: {trials})\n")
+                        
+                  
+                  elif trials == 6:
+                      trials -= 1
+                      print(f"Sadly it is not in the word :( ....the man is upset and he is putting his first leg on the chair (trials left: {trials})\n")
+                      
+            
+                  elif trials == 5:
+                      trials -= 1
+                      print(f"The letter {p2_alphabet} doesn't exist in the word ....the hangman put his second leg on the chair (trials left: {trials})\n")
+                      
+                
+                  elif trials == 4:
+                      trials -= 1
+                      print(f"{p2_alphabet} doesn't exist in the word ....nows his Body is on the chair (trials left: {trials})\n")
+                     
+                    
+                  elif trials == 3:
+                      trials -= 1
+                      print(f"Unfortunately {p2_alphabet} doesn't exist ....Oh oh the man is graping the rope with his First Arm (trials left: {trials})\n")
+                      
+
+                  elif trials == 2:
+                      trials -= 1
+                      print(f"{p2_alphabet} doesn't exist .... the man tied up the rope with his Second ARM SAVE HIM PLEASE (trials left: {trials})\n")
+
+            #In case It is in the word
+            elif p2_alphabet in m_player_word and ''.join(dashes) != m_player_word:  
+                print('lets see if {} exists in the word....'.format(p2_alphabet))
+                print('It is in the word !!\n')
+                                
+                #replace dashes with the correct chosen alphapets
+                for i, a in enumerate(list(m_player_word)):
+                    if a == p2_alphabet:
+                          dashes[i]=a 
+                print(f'{' '.join(dashes)}\n')
+
+                if ''.join(dashes) == m_player_word:
+                    print('Congratulations player two YOU WON!!!! and saved the HangMan')
+                    break
+            else:
+                 print(f"Come on !! {p2_alphabet} doesn't exist  .... The man PUTTING his Head.. THe man hanged himself\nHe suicided cuz of you idk how would you live with such a burden\nThe correct word is {m_player_word} ")
+                 break
+    
+       
