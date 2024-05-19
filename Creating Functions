@@ -1,0 +1,93 @@
+ #--------------------------------------Step 1 Taking Input from main player-----------------------------------------------
+# This Function Takes word from the main player and validate on it and >> it has two parameters (max_word_length,trials) their default values are (10,6)
+def word_and_trials(max_word_length=10, trials=6):
+    while True:
+        m_player_input = input('Main player should enter a word with a maximum size of 10 letters: ')
+        is_valid_letter = True
+
+        # Validating it contains only letters word
+        if not m_player_input.isalpha() or len(m_player_input) > max_word_length:
+            is_valid_letter = False
+            print(f'Please make sure you insert only letters with no numbers or special characters or an empty value and maxword_length is {max_word_length}')
+
+        # Handling user input (capitalizing it for guessing player comparison)
+        elif is_valid_letter:
+            upper_main_player_input = m_player_input.upper()
+            break
+
+    return upper_main_player_input, trials
+
+
+word, trials = word_and_trials()
+
+                            # ------------------ Step 2: Replacing the word with DASHES and printing SPACES between dashes ------------------
+dashes = []
+for _ in range(len(word)):
+    dashes.append("_")
+# Adding space between dashes and handling the last space
+print(f"{' '.join(dashes)}\n\n")
+
+                            # ------------------ Step 3: Taking the player2 guesses ------------------
+remaining_guesses=trials
+def guess():
+    trials=remaining_guesses #>> because its global variabl and i have to assign it to a value in the local scope
+    while True:
+        guess = input('Guess one letter in the word: ')
+        is_valid_letter = True
+
+        if not guess.isalpha() or len(guess) > 1:
+            is_valid_letter = False
+            print('Please make sure you insert only one alphabet.')
+
+        if is_valid_letter:
+            guess = guess.upper()
+
+            # Checking whether the alphabet is in the main player word or not
+
+            # In case it is not in the word
+            if guess not in word and trials != 0:
+                trials -= 1
+                if trials >= 6:
+                        print(f"{guess} is not in the word (trials left: {trials})\n") 
+
+                elif trials == 5:
+                    print(f"Sadly {guess} is not in the word :( ....the man is upset and he is putting his first leg on the chair (trials left: {trials})\n")
+                    
+            
+                elif trials == 4:
+                    print(f"The letter {guess} doesn't exist in the word ....the hangman put his second leg on the chair (trials left: {trials})\n")
+                    
+                
+                elif trials == 3:
+                    print(f"{guess} doesn't exist in the word ....nows his Body is on the chair (trials left: {trials})\n")
+                    
+                    
+                elif trials == 2:
+                    print(f"Unfortunately {guess} doesn't exist ....Oh oh the man is graping the rope with his First Arm (trials left: {trials})\n")
+                    
+
+                elif trials == 1:
+                    print(f"{guess} doesn't exist .... the man tied up the rope with his Second ARM SAVE HIM PLEASE (trials left: {trials})\n")
+                    trials -=1
+            
+            # In case it is in the word
+            elif guess in word and ''.join(dashes) != word:
+                print('Let\'s see if {} exists in the word....'.format(guess))
+                print('It is in the word!!\n')
+                # Replace dashes with the correct chosen alphabets
+                for i, a in enumerate(list(word)):
+                    if a == guess:
+                        dashes[i] = a
+
+                print(f'{" ".join(dashes)}\n')
+
+                if ''.join(dashes) == word:
+                    print('Congratulations player two! YOU WON!!!! and saved the HangMan')
+                    break
+
+            else:
+                print(f"Come on!! {guess} doesn't exist .... The man is PUTTING his head.. The man hanged himself.\n"
+                        "He committed suicide because of you. I don't know how you would live with such a burden.\n"
+                    f"YOU LOST!!!\n\nThe correct word is {word}")
+                break
+guess()  
