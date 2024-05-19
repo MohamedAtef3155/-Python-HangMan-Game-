@@ -1,0 +1,15 @@
+   #--------------------------------------Step 1 Taking Input from main player-----------------------------------------------
+# This Function Takes word from the main player and validate on it and >> it has two parameters (max_word_length,trials) their default values are (10,6)
+
+word, trials = word_and_trials(15,9) #Default values for the function (max length =10, trials =6)
+
+                            # ------------------ Step 2: Replacing the word with DASHES and printing SPACES between dashes ------------------
+dashes = []
+for _ in range(len(word)):
+    dashes.append("_")
+# Adding space between dashes and handling the last space
+print(f"{' '.join(dashes)}\n\n")
+
+                            # ------------------ Step 3: Taking the player2 guesses ------------------
+remaining_guesses=trials
+guess() # This functions takes make the secend players to keep guessing until he finish his trials or find the word.
