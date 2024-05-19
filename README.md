@@ -22,7 +22,7 @@
    First Function takes word input from the main player and validate on it and it has two parameters or args the (max_word_length,trials) and their default values are (10,6)
    Second Function validate on player2 guess and run the game till main player or player2 wins.
    
-3. Running the functions file is sample for playing the code using functions only.
+3. Running the functions file is sample for running the game using functions only.
 
 4. the code is a bit long because there are different print statements i could make it one print statement but I didn't to make the game more fun 
 
