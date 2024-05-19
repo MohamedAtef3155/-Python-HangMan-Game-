@@ -1,6 +1,6 @@
-## HangMan game in python
+# HangMan game in python
 
-# Game instructions
+## Game instructions
 1. Player one we call it (Main player) write a word that other player doesn't see it.
 
 2. words are replaced by dashes and space between them (- - - - - -).
