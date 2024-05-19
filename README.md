@@ -15,6 +15,6 @@
 6. if player2 get the word he wins otherwise the main play wins.
 
 
-#output sample 
+# output sample 
 
 ![hangman output sample](https://github.com/MohamedAtef3155/-Python-HangMan-Game-/assets/126327548/7d0389a8-6af8-414d-9007-93ba6b43a118)
